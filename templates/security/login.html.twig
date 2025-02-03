@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Connexion - MyContacts, votre application de gestion de contacts{% endblock %}
+
+{% block body %}
+    <div class="container-page form-page login-page">
+        
+        <form id="form-login" method="post">
+            {% if error %}
+                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            {% if app.user %}
+                <div class="mb-3">
+                    Vous êtes connecté en tant que {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+                </div>
+            {% endif %}
+            <h1 class="h3 mb-3 font-weight-normal">Connexion</h1>
+            <div class="form-element">
+                <label for="inputEmail">Email</label>
+                <input type="email" value="{{ last_username }}" name="hnp_login" id="inputEmail" class="form-control" autocomplete="email" required autofocus>            
+            </div>
+            <div class="form-element">
+                <label for="inputPassword">Mot de passe</label>
+                <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>            
+            </div>
+
+            <input type="email" name="email" class="hiddenFormField">
+
+            <input type="hidden" name="_csrf_token"
+                value="{{ csrf_token('authenticate') }}"
+            >
+
+            <div class="form-element">
+                <button class="btn btn-lg btn-primary bouton-action" type="submit">
+                    Se connecter
+                </button>
+            </div>
+            <p>
+                J'ai <a href="{{ path('app_forgot_password_request') }}">oublié mon mot de passe</a>
+            </p>
+            <p>Nouveau ? <a href="{{ path('app_register') }}">Inscrivez-vous</a></p>
+        </form>        
+    </div>
+
+{% endblock %}
