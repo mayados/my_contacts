@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if edit == false %}
+        Ajout d'un contact
+    {% else %}
+        Modification du contact
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+<div class="container-page">
+    <div>
+        {% if edit == false %}
+            <h1>Ajout d'un contact</h1>
+        {% else %}
+            <h1>Modification d'un contact</h1>
+        {% endif %}     
+        <p>Les champs comportant * sont obligatoires</p>   
+        
+        {{ form_start(formAddContact, {'attr': {'data-turbo': 'false'}}) }}
+
+            <div>
+                {% if formAddContact.lastname.vars.errors|length > 0 %}
+                    <div class="form-errors">
+                        {{ form_errors(formAddContact.lastname) }}
+                    </div>
+                {% endif %}
+                {{ form_row(formAddContact.lastname) }}            
+            </div>
+        
+            <div>
+                {% if formAddContact.firstname.vars.errors|length > 0 %}
+                    <div class="form-errors">
+                        {{ form_errors(formAddContact.firstname) }}
+                    </div>
+                {% endif %}
+                {{ form_row(formAddContact.firstname) }}            
+            </div>
+        
+            <div>
+                {% if formAddContact.phone.vars.errors|length > 0 %}
+                    <div class="form-errors">
+                        {{ form_errors(formAddContact.phone) }}
+                    </div>
+                {% endif %}
+                {{ form_row(formAddContact.phone) }}            
+            </div>
+        
+            <div>
+                {% if formAddContact.mail.vars.errors|length > 0 %}
+                    <div class="form-errors">
+                        {{ form_errors(formAddContact.mail) }}
+                    </div>
+                {% endif %}
+                {{ form_row(formAddContact.mail) }}            
+            </div>
+                
+        {{ form_end(formAddContact) }}
+    
+    </div>
+</div>
+{% endblock %}

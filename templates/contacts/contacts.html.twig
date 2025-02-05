@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contacts - Gestion des Contacts{% endblock %}
+
+{% block body %}
+<div class="container-page">
+    <section>
+        <h1>Liste des Contacts</h1>
+    </section>
+
+    <section>
+        <a href="{{ path('add_contact') }}">Ajouter un contact</a>
+    </section>
+
+    <div class="table-responsive">
+        <table class="contact-table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Téléphone</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for contact in contacts %}
+                    <tr>
+                        <td>{{ contact.lastname }}</td>
+                        <td>{{ contact.firstname }}</td>
+                        <td>{{ contact.phone | default('/') }}</td>
+                        <td>{{ contact.mail | default('/') }}</td>
+                        <td>
+                            <a href="{{ path('edit_contact', { id: contact.id }) }}">Modifier</a>
+                            <a href="{{ path('remove_contact', { id: contact.id }) }}" onclick="return confirm('Êtes-vous sûr ?');">Supprimer</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">Aucun contact trouvé.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+    <!-- Affichage en cartes pour mobile -->
+    <div class="cards-container">
+        {% for contact in contacts %}
+            <div class="contact-card">
+                <h3>{{ contact.lastname }} {{ contact.firstname }}</h3>
+                <p><strong>Téléphone :</strong> {{ contact.phone | default('/') }}</p>
+                <p><strong>Email :</strong> {{ contact.mail | default('/') }}</p>
+                <div class="card-actions">
+                    <a href="{{ path('edit_contact', { id: contact.id }) }}" class="edit-btn">Modifier</a>
+                    <a href="{{ path('remove_contact', { id: contact.id }) }}" class="delete-btn" onclick="return confirm('Êtes-vous sûr ?');">Supprimer</a>
+                </div>
+            </div>
+        {% else %}
+            <p class="no-contact">Aucun contact trouvé.</p>
+        {% endfor %}
+    </div>
+    
+
+    <div>
+        {{ knp_pagination_render(elementPagine) }}
+    </div>
+</div>
+{% endblock %}

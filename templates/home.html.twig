@@ -1,14 +1,50 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}MyContacts - gestion de contacts{% endblock %}
+{% block title %}MyContacts - Gestion de contacts{% endblock %}
 
 {% block body %}
-
 <div class="container-page">
-      
-    <section id="bienvenue">
-        <h1>MyContacts, votre site de gestion de contacts</h1>
-    <section></section>
-</div>
+    <h1 class="page-title">Bienvenue sur <span class="highlight">MyContacts</span></h1>
 
+    <!-- Section Fonctionnalités -->
+    <section class="features-section">
+        <h2>Fonctionnalités principales</h2>
+        <div class="features-grid">
+            <article class="feature-card">
+                <i class="fas fa-user-plus"></i>
+                <h3>Ajoutez et organisez vos contacts</h3>
+                <p>Stockez les informations importantes de vos amis, collègues et proches en un seul endroit.</p>
+            </article>
+            <article class="feature-card">
+                <i class="fas fa-search"></i>
+                <h3>Recherchez et filtrez facilement</h3>
+                <p>Utilisez notre système de recherche avancé pour retrouver vos contacts en quelques secondes.</p>
+            </article>
+            <article class="feature-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Accédez à vos contacts partout</h3>
+                <p>Grâce à notre plateforme responsive, accédez à vos contacts depuis n'importe quel appareil.</p>
+            </article>
+        </div>
+    </section>
+
+    <!-- Section Pourquoi nous choisir -->
+    <section class="why-choose-section">
+        <h2>Pourquoi choisir <span class="highlight">MyContacts</span> ?</h2>
+        <div class="reasons-grid">
+            <div class="reason-card">
+                <i class="fas fa-check-circle"></i>
+                <p>Interface intuitive et facile à utiliser</p>
+            </div>
+            <div class="reason-card">
+                <i class="fas fa-shield-alt"></i>
+                <p>Sécurisation des données personnelles</p>
+            </div>
+            <div class="reason-card">
+                <i class="fas fa-sync-alt"></i>
+                <p>Accès rapide et synchronisation entre appareils</p>
+            </div>
+        </div>
+    </section>
+</div>
 {% endblock %}
