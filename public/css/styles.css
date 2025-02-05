@@ -1,0 +1,641 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Flash Messages */
+.flash-message {
+    position: relative;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Success */
+.flash-message.success {
+    background-color: #4CAF50; /* Vert */
+}
+
+/* Notice */
+.flash-message.notice {
+    background-color: #FFA500; /* Orange */
+}
+
+/* Warning */
+.flash-message.warning {
+    background-color: #FF4C4C; /* Rouge */
+}
+
+/* Bouton de fermeture flash message */
+.flash-message .close-btn {
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.flash-message .close-btn:hover {
+    opacity: 0.7;
+}
+
+/* Animation d'apparition flash message */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    background-color: #f9f9f9;
+    color: #333;
+    margin-top: 50px; 
+}
+
+h1, h2, h3, h4 {
+    color: #333;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+ul {
+    list-style: none;
+}
+
+.form-errors {
+    color: #FF4C4C; /* Rouge */
+    font-size: 14px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.container-page{
+    margin-top: 10vh;
+    min-height: 80vh;
+    padding: 5vh;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* header */
+header {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 10vh;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    max-width: 1200px;
+    margin: auto;
+    height: 100%;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Navigation */
+nav {
+    transition: transform 0.3s ease-in-out;
+}
+
+nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li {
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Burger Menu  */
+.burger-menu {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.burger-menu span {
+    display: block;
+    width: 30px;
+    height: 4px;
+    background-color: #333;
+    margin: 5px 0;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Animation burger ouvert */
+.burger-menu.open span:nth-child(1) {
+    transform: translateY(15px) rotate(45deg);
+
+}
+
+.burger-menu.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.burger-menu.open span:nth-child(3) {
+    transform: translateY(-13px) rotate(-45deg);
+
+}
+
+/* Table Responsive */
+.table-responsive {
+    overflow-x: auto;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.contact-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+.contact-table th, .contact-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.contact-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.contact-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Cards (affichage mobile) */
+.cards-container {
+    display: none; /* Caché par défaut sur desktop */
+    margin-top: 20px;
+}
+
+.contact-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.card-actions {
+    margin-top: 10px;
+}
+
+.edit-btn, .delete-btn {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: 0.3s;
+}
+
+.edit-btn {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #45a049;
+}
+
+.delete-btn {
+    background-color: #FF4C4C;
+    color: white;
+    margin-left: 10px;
+}
+
+.delete-btn:hover {
+    background-color: #D43F3F;
+}
+
+
+/* Contenu principal */
+.main-content {
+    margin-top: 120px; 
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+section {
+    margin: 40px 0;
+}
+
+section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+section p {
+    font-size: 1rem;
+    color: #666;
+}
+
+
+/* Formulaires */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="email"], input[type="password"], input[type="tel"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="submit"], button {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #45a049;
+}
+
+.form-errors {
+    color: #FF4C4C;
+    margin-bottom: 20px;
+}
+
+/* Contacts table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/*Pagination  */
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.pagination a {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    background-color: #45a049;
+}
+
+.pagination a.active {
+    background-color: #333;
+}
+
+/* HOME */
+.page-title {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.highlight {
+    color: #4CAF50;
+}
+
+/* ========== Section Fonctionnalités ========== */
+.features-section {
+    margin: 40px 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.feature-card {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+}
+
+.feature-card i {
+    font-size: 40px;
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+/* ========== Section Pourquoi nous choisir ========== */
+.why-choose-section {
+    margin: 40px 0;
+}
+
+.reasons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.reason-card {
+    background: #ffffff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.reason-card:hover {
+    transform: translateY(-5px);
+}
+
+.reason-card i {
+    font-size: 30px;
+    color: #4CAF50;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #333;
+    color: white;
+    padding: 40px 0;
+    font-size: 14px;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+    margin-bottom: 20px;
+}
+
+.footer-section h3,
+.footer-section h4 {
+    color: #4CAF50;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #4CAF50;
+}
+
+/* Social links */
+.social-links {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligne à gauche sur desktop */
+    padding: 0;
+}
+
+.social-links li {
+    display: flex;
+    align-items: center;
+}
+
+.social-links i {
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+/* Footer bottom */
+.footer-bottom {
+    text-align: center;
+    padding: 15px;
+    background-color: #222;
+    font-size: 13px;
+}
+
+.footer-bottom a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+
+    .container-page{
+        min-height: 50vh;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+
+    nav {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background: #fff;
+        width: 200px;
+        box-shadow: -2px 0px 10px rgba(0, 0, 0, 0.1);
+        transform: translateX(100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    nav ul {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    nav ul li {
+        padding: 15px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+    }
+
+    /* Affichage du menu quand le burger est activé */
+    nav.open {
+        transform: translateX(0);
+    }
+
+    .table-responsive {
+        display: none;
+    }
+
+    .cards-container {
+        display: block;
+    }
+
+    .container {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .main-content {
+        margin-top: 80px; /* Space for header */
+    }
+
+    h1, h2 {
+        font-size: 1.5rem;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .reasons-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+
+    .social-links {
+        align-items: center; 
+    }
+}
+
+
+/* Pour les écrans plus larges */
+@media (min-width: 1200px) {
+    .container {
+        width: 80%;
+    }
+}
