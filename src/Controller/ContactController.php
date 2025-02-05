@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Contact;
+use App\Entity\User;
 use App\Repository\ContactRepository;
 use App\Form\ContactType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -19,10 +20,10 @@ class ContactController extends AbstractController
     #[Route('/contacts', name: 'app_contacts')]
     public function index(ContactRepository $cr, Request $request): Response
     {
-
+        
         return $this->render('contacts/contacts.html.twig', [
-            'contacts' => $cr->findPaginatedContacts($request->query->getInt('page',1)),
-            'elementPagine' => $cr->findPaginatedContacts($request->query->getInt('page',1))
+            'contacts' => $cr->findPaginatedContacts($request->query->getInt('page',1),$this->getUser()->getId()),
+            'elementPagine' => $cr->findPaginatedContacts($request->query->getInt('page',1),$this->getUser()->getId())
         ]);
     }
 

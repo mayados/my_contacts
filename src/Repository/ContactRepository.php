@@ -28,11 +28,13 @@ class ContactRepository extends ServiceEntityRepository
         }
     }
 
-    public function findPaginatedContacts(int $page): PaginationInterface
+    public function findPaginatedContacts(int $page, int $userId): PaginationInterface
     {
         // On crée une fonction ici car la logique ne doit pas se retouver majoritairement dans le controller, il est avant tout fait pour rediriger sur les vues
         $data = $this->createQueryBuilder('c')
         ->select('c.id','c.firstname','c.lastname')
+        ->where('c.user = :userId')  
+        ->setParameter('userId', $userId)
         ->addOrderBy('c.lastname', 'DESC')
         ->getQuery()
         ->getResult();
